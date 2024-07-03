@@ -17,7 +17,6 @@ function Landing(){
                 <BreadcrumbItem p={4}>
                     <Button colorScheme='blue' p={4}><BreadcrumbLink href='/'>Home</BreadcrumbLink></Button>
                 </BreadcrumbItem>
-
                 <BreadcrumbItem p={4}>
                     <Button colorScheme='blue' p={4}><BreadcrumbLink href='/restaurants'>Restaurants</BreadcrumbLink></Button>
                 </BreadcrumbItem>
