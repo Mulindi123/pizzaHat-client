@@ -15,7 +15,10 @@ function Landing(){
         <div className="">
             <Breadcrumb spacing='8px' separator={<ChevronRightIcon color='gray.500' />}>
                 <BreadcrumbItem p={4}>
-                    <Button colorScheme='blue' p={4}><BreadcrumbLink href='/'>Restaurants</BreadcrumbLink></Button>
+                    <Button colorScheme='blue' p={4}><BreadcrumbLink href='/'>Home</BreadcrumbLink></Button>
+                </BreadcrumbItem>
+                <BreadcrumbItem p={4}>
+                    <Button colorScheme='blue' p={4}><BreadcrumbLink href='/restaurants'>Restaurants</BreadcrumbLink></Button>
                 </BreadcrumbItem>
 
                 <BreadcrumbItem p={4}>
