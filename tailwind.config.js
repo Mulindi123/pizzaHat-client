@@ -8,6 +8,7 @@ module.exports = {
       colors:{
         'slate-600': '#6B46C1',
         'custom-purple': '#5D3464',
+        'color-primary': '#E0E0E0',
       },
     },
   },
