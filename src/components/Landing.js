@@ -15,22 +15,22 @@ function Landing(){
         <div className="">
             <Breadcrumb spacing='8px' separator={<ChevronRightIcon color='gray.500' />}>
                 <BreadcrumbItem p={4}>
-                    <Button colorScheme='blue' p={4}><BreadcrumbLink href='/'>Home</BreadcrumbLink></Button>
+                    <Button colorScheme='purple' p={4}><BreadcrumbLink href='/'>Home</BreadcrumbLink></Button>
                 </BreadcrumbItem>
                 <BreadcrumbItem p={4}>
-                    <Button colorScheme='blue' p={4}><BreadcrumbLink href='/restaurants'>Restaurants</BreadcrumbLink></Button>
-                </BreadcrumbItem>
-
-                <BreadcrumbItem p={4}>
-                    <Button colorScheme="blue" p={4}><BreadcrumbLink href='/pizzas'>Pizza</BreadcrumbLink></Button>
+                    <Button colorScheme='purple' p={4}><BreadcrumbLink href='/restaurants'>Restaurants</BreadcrumbLink></Button>
                 </BreadcrumbItem>
 
                 <BreadcrumbItem p={4}>
-                    <Button colorScheme="blue" p={4}><BreadcrumbLink href='/restaurantPizzas'>Add Pizza</BreadcrumbLink></Button>
+                    <Button colorScheme="purple" p={4}><BreadcrumbLink href='/pizzas'>Pizza</BreadcrumbLink></Button>
                 </BreadcrumbItem>
 
                 <BreadcrumbItem p={4}>
-                    <Button colorScheme="blue" p={4} value={'outline'} className="m-2"><BreadcrumbLink href='/contact'>Contact</BreadcrumbLink></Button>
+                    <Button colorScheme="purple" p={4}><BreadcrumbLink href='/restaurantPizzas'>Add Pizza</BreadcrumbLink></Button>
+                </BreadcrumbItem>
+
+                <BreadcrumbItem p={4}>
+                    <Button colorScheme="purple" p={4} value={'outline'} className="m-2"><BreadcrumbLink href='/contact'>Contact</BreadcrumbLink></Button>
                 </BreadcrumbItem>
             </Breadcrumb>
             <div className="">

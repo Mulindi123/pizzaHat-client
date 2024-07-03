@@ -6,7 +6,8 @@ module.exports = {
   theme: {
     extend: {
       colors:{
-        'slate-600': '#475569', // This is the default slate-600 color, added here for customization
+        'slate-600': '#6B46C1',
+        'custom-purple': '#5D3464',
       },
     },
   },
