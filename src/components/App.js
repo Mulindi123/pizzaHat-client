@@ -1,4 +1,5 @@
 import { Routes, Route} from 'react-router-dom'
+import Home from './Home';
 import RestaurantPage from "./RestaurantsPage";
 import Landing from "./Landing";
 import Pizzas from './Pizzas';
@@ -10,7 +11,8 @@ function App() {
     <div className="bg-slate-500 min-h-screen">
     <Routes>
       <Route element= {<Landing/>}>
-        <Route path= "/" element={<RestaurantPage />} />
+      <Route path='/' element={<Home />} />
+        <Route path= "/restaurants" element={<RestaurantPage />} />
         <Route path= "/pizzas" element={<Pizzas />} />
         <Route path= "/restaurantPizzas" element={<PostRestaurantPizzas />} />
         <Route path= "/contact" element={<Contact />} />
