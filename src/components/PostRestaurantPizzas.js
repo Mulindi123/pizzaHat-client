@@ -55,6 +55,7 @@ const PostRestaurantPizzas = () => {
                     <label htmlFor="price" className="block text-gray-700 text-ms font-bold mb-2">Price:</label>
                     <input
                         onChange={(e) => setPrice(e.target.value)}
+                        required
                         name="price"
                         type="number"
                         placeholder="Enter Price"
@@ -66,6 +67,7 @@ const PostRestaurantPizzas = () => {
                     <label htmlFor="pizzaId" className="block text-gray-700 text-ms font-bold mb-2">Pizza Id:</label>
                     <input
                         onChange={(e) => setPizzaId(e.target.value)}
+                        required
                         name="pizzaId"
                         type="number"
                         placeholder="Enter PizzaID"
@@ -77,6 +79,7 @@ const PostRestaurantPizzas = () => {
                 <label htmlFor="price" className="block text-gray-700 text-ms font-bold mb-2">Restaurant Id:</label>
                     <input
                         onChange={(e) => setRestaurantId(e.target.value)}
+                        required
                         name="restId"
                         type="number"
                         placeholder="Enter Restaurant ID"
