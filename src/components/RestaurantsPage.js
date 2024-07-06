@@ -21,7 +21,7 @@ function handleDeleteRestaurant(id){
 }
 
     return (
-     <div className="">
+     <div className="min-h-screen">
         <RestaurantCard restaurants={restaurants} setSelectedRestaurant={setSelectedRestaurant} />
         <RestaurantDetails restaurant={selectedRestaurant} onDeleteRestaurant={handleDeleteRestaurant} />
     </div> );
