@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 
 function Landing() {
   return (
-    <div className="min-h-screen p-4 bg-gradient-to-b">
+    <div className="min-h-screen p-4 bg-slate-600">
       <nav className="flex flex-wrap justify-center mb-4">
         <div className="p-2 md:p-4">
           <a href="/" className="inline-block px-4 py-2 text-white border rounded-lg border-black hover:bg-purple-600">

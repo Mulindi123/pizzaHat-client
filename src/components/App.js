@@ -8,7 +8,7 @@ import Contact from './Contact';
 
 function App() {
   return (
-    <div className="bg-slate-500 min-h-screen">
+    <div className="min-h-screen">
     <Routes>
       <Route element= {<Landing/>}>
       <Route path='/' element={<Home />} />
