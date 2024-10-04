@@ -5,7 +5,7 @@ const RestaurantDetails = ({ restaurant, onDeleteRestaurant }) => {
 
     useEffect(() => {
         if (restaurant) {
-            fetch(`http://localhost:5000/restaurants/${restaurant.id}`)
+            fetch(`https://pizzahat-server.onrender.com//restaurants/${restaurant.id}`)
                 .then(r => {
                     if (r.status === 404) {
                         return { "error": "Restaurant not found" };

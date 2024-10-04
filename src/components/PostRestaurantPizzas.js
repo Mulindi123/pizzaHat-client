@@ -6,7 +6,7 @@ const PostRestaurantPizzas = () => {
   const [restaurantPizza, setRestaurantPizza] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/restaurant_pizzas")
+    fetch("https://pizzahat-server.onrender.com//restaurant_pizzas")
       .then((r) => r.json())
       .then((data) => {
         setRestaurantPizza(data);

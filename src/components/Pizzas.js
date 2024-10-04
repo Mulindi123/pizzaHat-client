@@ -4,7 +4,7 @@ const Pizzas = () => {
   const [pizzas, setPizzas] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/pizzas")
+    fetch("https://pizzahat-server.onrender.com//pizzas")
       .then((r) => r.json())
       .then((data) => {
         setPizzas(data);

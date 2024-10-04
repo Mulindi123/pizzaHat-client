@@ -7,7 +7,7 @@ const ResaurantPage = () => {
     const [selectedRestaurant, setSelectedRestaurant] = useState(null);
     
     useEffect(() => {
-        fetch("http://localhost:5000/restaurants")
+        fetch("https://pizzahat-server.onrender.com//restaurants")
         .then( r => r.json())
         .then((data) => {
             setRestaurants(data)
