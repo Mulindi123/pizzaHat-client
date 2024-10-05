@@ -1,6 +1,6 @@
 const Footer = () => {
     return (
-        <div className="flex justify-center items-center h-20 bg-purple-900 text-white">
+        <div className="flex justify-center items-center h-20 bg-slate-950 text-white">
             <ul className="flex space-x-8">
                 <li>
                     <a href="mailto:medrine.mulindi@gmail.com" className="hover:underline">

@@ -1,7 +1,7 @@
 const Contact = () => {
     return ( 
         <>
-            <div className="flex justify-center items-center text-white">
+            <div className="flex justify-center items-center text-white min-h-screen">
                 <ul className="flex space-x-8">
                     <li>
                         <a href="mailto:medrine.mulindi@gmail.com" className="hover:underline">

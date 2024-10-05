@@ -25,7 +25,7 @@ const PostRestaurantPizzas = () => {
   });
 
   return (
-    <div className="">
+    <div className="min-h-screen">
       <h1 className="text-center text-2xl font-extrabold">Add Pizza</h1>
       <Formik
         initialValues={{ price: "", pizzaId: "", restaurantId: "" }}
