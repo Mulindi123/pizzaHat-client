@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import Footer from "./Footer";
 // import { ChevronRightIcon } from "@chakra-ui/icons";
 
 function Landing() {
@@ -33,6 +34,7 @@ function Landing() {
       </nav>
       <div>
         <Outlet />
+        <Footer />
       </div>
     </div>
   );

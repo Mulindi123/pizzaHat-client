@@ -13,6 +13,7 @@ const Pizzas = () => {
   }, []);
 
   return (
+  <div className="min-h-screen">
     <div className="container mx-auto p-4 mt-10 bg-slate-400">
       <h1 className="text-2xl font-bold mb-4">Pizzas</h1>
       <table className="min-w-full border border-gray-200">
@@ -33,6 +34,7 @@ const Pizzas = () => {
           ))}
         </tbody>
       </table>
+    </div>
     </div>
   );
 };
