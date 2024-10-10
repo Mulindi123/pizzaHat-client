@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa';
+import { useSwipeable } from 'react-swipeable';
 
 const Home = () => {
     const images = [
@@ -26,37 +27,62 @@ const Home = () => {
     const [imagesToShow, setImagesToShow] = useState(3); // Default to 3 images
     const [transitioning, setTransitioning] = useState(false);
     const transitionRef = useRef();
+    const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 768); // Track screen size
 
-    // Function to go to the next set of images
-    const nextImage = () => {
-        if (transitioning) return;
-        setTransitioning(true);
-        setCurrentIndex((prevIndex) => prevIndex + 1);
-    };
+    // Preload images
+    useEffect(() => {
+        images.forEach((image) => {
+            const img = new Image();
+            img.src = image;
+        });
+    },);
 
-    const prevImage = () => {
-        if (transitioning) return;
-        setTransitioning(true);
-        setCurrentIndex((prevIndex) => prevIndex - 1);
-    };
-
-    // Effect to handle responsiveness and update the number of images to show
+    // Responsive image display
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth < 768) {
-                setImagesToShow(1); // Show 1 image on screens smaller than 768px (mobile)
-            } else {
-                setImagesToShow(3); // Show 3 images on larger screens (tablets and above)
-            }
+            const screenLarge = window.innerWidth >= 768;
+            setIsLargeScreen(screenLarge); // Check if the screen is large
+            setImagesToShow(screenLarge ? 3 : 1); // Adjust number of images to show based on screen size
         };
 
-        handleResize(); // Initial check
+        handleResize(); // Initial call
         window.addEventListener('resize', handleResize);
 
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    // Automatic slide effect
+    // Debounce function for navigation arrows
+    const debounce = (func, delay) => {
+        let timeoutId;
+        return (...args) => {
+            if (timeoutId) clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                func.apply(null, args);
+            }, delay);
+        };
+    };
+
+    const nextImage = debounce(() => {
+        if (transitioning) return;
+        setTransitioning(true);
+        setCurrentIndex((prevIndex) => prevIndex + 1);
+    }, 300);
+
+    const prevImage = debounce(() => {
+        if (transitioning) return;
+        setTransitioning(true);
+        setCurrentIndex((prevIndex) => prevIndex - 1);
+    }, 300);
+
+    // Swipe handlers for touch devices
+    const handlers = useSwipeable({
+        onSwipedLeft: () => nextImage(),
+        onSwipedRight: () => prevImage(),
+        preventDefaultTouchmoveEvent: true,
+        trackMouse: true,
+    });
+
+    // Auto slide every 3 seconds
     useEffect(() => {
         transitionRef.current = nextImage;
     });
@@ -69,20 +95,20 @@ const Home = () => {
         return () => clearInterval(interval);
     }, []);
 
-    // Effect to handle transitions and seamless looping
+    // Handle seamless looping
     useEffect(() => {
         if (!transitioning) return;
 
         const transitionEndHandler = setTimeout(() => {
             setTransitioning(false);
 
-            // Reset position when reaching the cloned images for seamless looping
+            // Adjust index for seamless looping
             if (currentIndex === 0) {
-                setCurrentIndex(imageList.length - 2); // Go to the last "real" image
+                setCurrentIndex(imageList.length - 2);
             } else if (currentIndex === imageList.length - 1) {
-                setCurrentIndex(1); // Go to the first "real" image
+                setCurrentIndex(1);
             }
-        }, 500); // Transition duration of 0.5s
+        }, 500); // Match transition duration
 
         return () => clearTimeout(transitionEndHandler);
     }, [currentIndex, imageList.length, transitioning]);
@@ -98,12 +124,15 @@ const Home = () => {
             </span>
 
             {/* Image Carousel */}
-            <div className="relative w-full mt-10 flex items-center justify-center overflow-hidden">
+            <div {...handlers} className="relative w-full mt-10 flex items-center justify-center overflow-hidden">
                 {/* Left Arrow */}
-                <FaArrowAltCircleLeft
-                    onClick={prevImage}
-                    className="absolute left-2 z-10 text-3xl text-gray-600 cursor-pointer md:text-4xl lg:text-5xl hidden md:block" // Hide on small screens
-                />
+                {isLargeScreen && (
+                    <FaArrowAltCircleLeft
+                        onClick={prevImage}
+                        aria-label="Previous image"
+                        className="absolute left-2 z-10 text-3xl text-purple-400 cursor-pointer md:text-4xl lg:text-5xl hidden md:block"
+                    />
+                )}
 
                 {/* Image Container */}
                 <div className="w-full md:w-3/4 h-[300px] md:h-[500px] overflow-hidden relative flex justify-center items-center">
@@ -117,15 +146,14 @@ const Home = () => {
                             <div
                                 key={index}
                                 className={`flex-none w-full md:w-1/2 lg:w-1/3 h-[300px] md:h-[500px] px-2 ${
-                                    // Responsive width classes
-                                    index >= currentIndex && index < currentIndex + imagesToShow
-                                        ? 'opacity-100'
-                                        : 'opacity-50'
+                                    // On small screens, only the current image has full opacity
+                                    isLargeScreen || (index === currentIndex) ? 'opacity-100' : 'opacity-50'
                                 } transition-opacity duration-500 ease-in-out`}
                             >
                                 <img
                                     src={image}
-                                    alt={`pizza-${index}`}
+                                    alt={`Pizza ${index + 1}`}
+                                    loading="lazy"
                                     className="w-full h-full object-cover rounded-md shadow-lg"
                                 />
                             </div>
@@ -134,10 +162,13 @@ const Home = () => {
                 </div>
 
                 {/* Right Arrow */}
-                <FaArrowAltCircleRight
-                    onClick={nextImage}
-                    className="absolute right-2 z-10 text-3xl text-gray-600 cursor-pointer md:text-4xl lg:text-5xl hidden md:block" // Hide on small screens
-                />
+                {isLargeScreen && (
+                    <FaArrowAltCircleRight
+                        onClick={nextImage}
+                        aria-label="Next image"
+                        className="absolute right-2 z-10 text-3xl text-purple-400 cursor-pointer md:text-4xl lg:text-5xl hidden md:block"
+                    />
+                )}
             </div>
         </div>
     );
