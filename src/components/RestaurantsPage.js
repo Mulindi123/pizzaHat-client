@@ -21,7 +21,7 @@ function handleDeleteRestaurant(id){
 }
 
     return (
-     <div className="min-h-screen">
+     <div className="min-h-screen bg-gradient-to-b from-purple-200 via-purple-300 to-purple-400">
         <RestaurantCard restaurants={restaurants} setSelectedRestaurant={setSelectedRestaurant} />
         <RestaurantDetails restaurant={selectedRestaurant} onDeleteRestaurant={handleDeleteRestaurant} />
     </div> );

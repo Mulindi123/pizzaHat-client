@@ -30,7 +30,7 @@ const Contact = () => {
                 id="contact-form" 
                 ref={formRef} 
                 onSubmit={handleSubmit} 
-                className="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-lg mt-6"
+                className="max-w-lg mx-auto p-6 bg-slate-400 border-gray-50 rounded-lg shadow-lg mt-6"
             >
                 <input type="hidden" name="contact_number" value="697483" />
                 <div className="mb-4">

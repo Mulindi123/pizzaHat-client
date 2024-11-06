@@ -13,7 +13,7 @@ const Pizzas = () => {
   }, []);
 
   return (
-  <div className="min-h-screen">
+  <div className="min-h-screen bg-gradient-to-b from-purple-200 via-purple-300 to-purple-400 p-10">
     <div className="container mx-auto p-4 mt-10 bg-slate-400">
       <h1 className="text-2xl font-bold mb-4">Pizzas</h1>
       <table className="min-w-full border border-gray-200">
