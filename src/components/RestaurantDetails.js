@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from "./Button";
 
 const RestaurantDetails = ({ restaurant, onDeleteRestaurant }) => {
     const [selectedRestaurant, setSelectedRestaurant] = useState(restaurant);
@@ -58,12 +59,13 @@ const RestaurantDetails = ({ restaurant, onDeleteRestaurant }) => {
                             ))}
                         </tbody>
                     </table>
-                    <button
-                        className="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700"
+                    <Button
+                        text="Delete"
+                        variant="accent"
                         onClick={handleDelete}
-                    >
-                        Delete
-                    </button>
+                        textColor="text-red-500"
+                    />
+                
                 </div>
             ) : (
                 <p className="text-3xl">Loading...</p>
