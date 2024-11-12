@@ -1,3 +1,4 @@
+import {FaArrowUp} from 'react-icons/fa'
 const Footer = () => {
     return (
         <div className="flex justify-center items-center h-20 bg-purple-950 text-white">
@@ -23,6 +24,12 @@ const Footer = () => {
                     </a>
                 </li>
             </ul>
+                <button
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className="fixed bottom-6 right-4 flex items-center justify-center space-x-2 px-4 py-2 bg-white text-blue-700 font-semibold rounded-lg shadow-lg hover:bg-blue-200 transition duration-300 transform hover:scale-105 hover:animate-bounce"
+                >
+                <FaArrowUp className="text-gray-700 text-xl hover:text-blue-900 transition duration-300" />
+            </button>
         </div>
     );
 }
